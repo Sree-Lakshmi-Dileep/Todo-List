@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-List</title>
+</head>
+<body>
+    <div class="todolist-container">
+        <div class="navbar">
+            <p>WELCOME TO TODO LIST</p>
+            <button>Report</button>
+            <button>Log out</button>
+        </div>
+        <div class="statistics">
+             <h3>STATISTICS</h3>
+             <p>Completed:0 <br> pending:0</p>
+        </div>
+        <div class="add">
+            <form action="">
+                <label for="">Title:</label>
+                <input type="text" placeholder="Title" class="title">
+
+                <label for="">deadline:</label>
+                <input type="date" class="deadline">
+
+                <label >Category:</label>
+               <select name="Category" id="" >                    
+                    <option value="1">personal</option>
+                    <option value="2">studying</option>
+                    <option value="3">Work</option>
+                </select>
+                <button>ADD TODO</button>
+                
+            </form>
+
+        </div>
+
+        <section class="list-option">
+            <h3>Your TODO's</h3>
+
+            <label >Sort:</label>
+               <select name="Category" id="" > 
+                    <option value="1">All</option>
+                    <option value="2">Deadline</option>
+                    <option value="3">Alphabet</option>
+                </select>
+
+            <label >Filter:</label>
+               <select name="Category"  > 
+                    <option value="1">All</option>
+                    <option value="2">Category</option>               
+                </select>
+                <ul>
+                    
+                </ul>
+            
+        </section>
+       
+
+
+    </div>
+</body>
+</html>
+
