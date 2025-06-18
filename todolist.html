@@ -11,7 +11,7 @@
 <body>
     <div class="todolist-container">
         <div class="navbar">
-            <p>WELCOME TO TODO LIST</p>
+            <h2>WELCOME TO YOUR TODO LIST!</h2>
            <div class="report">
              
              <span class="report-content">
@@ -22,22 +22,24 @@
             <button><a href="login.html">Log out</a></button>
         </div>
         <div class="statistics">
-             <h3>STATISTICS</h3>
-             <p>Completed:0 <br> pending:0</p>
+             <h3>Your Task Overview</h3>
+             <p>Total:0 <br> Completed:0 <br> Pending:0</p>
         </div>
         <div class="add">
+            <h3>Add Something to Do</h3>
             <form >
-                <label for="">Title:</label>
-                <input type="text" placeholder="Title" class="title">
 
-                <label for="">deadline:</label>
-                <input type="date" class="deadline">
+                <label for="title">Title:</label>
+                <input type="text" placeholder="Title" id="title">
 
-                <label >Category:</label>
-                <select name="Category" id="" >                    
-                    <option value="1">personal</option>
-                    <option value="2">studying</option>
-                    <option value="3">Work</option>
+                <label for="deadline">Deadline:</label>
+                <input type="date" id="deadline">
+
+                <label for="category">Category:</label>
+                <select name="Category" id="category" >                    
+                    <option value="personal">Personal</option>
+                    <option value="studies">Studies</option>
+                    <option value="work">Work</option>
                 </select>
                 <button>ADD TODO</button>
                 
@@ -46,21 +48,22 @@
         </div>
 
         <section class="list">
-            <h3>Your TODO's</h3>
+            <h3>Don't Forget These!</h3>
 
-            <label >Sort:</label>
-               <select name="Category" id="" > 
-                    <option value="1">None</option>
-                    <option value="2">Deadline</option>
-                    <option value="3">Alphabet</option>
+            <label for="sort">Sort:</label>
+               <select name="sort" id="sort"  > 
+                    <option value="none">None</option>
+                    <option value="deadline">Deadline</option>
+                    <option value="alphabet">Alphabet</option>
+                    <option value="category">Category</option>
                 </select>
 
-            <label >Filter:</label>
-               <select name="Category"> 
-                    <option value="1">All</option>
-                    <option value="2">Category-personal</option> 
-                    <option value="2">Category-work</option>  
-                    <option value="2">Category-other</option>              
+            <label for="filter">Filter:</label>
+               <select name="filter" id="filter"> 
+                    <option value="all">All</option>
+                    <option value="category-personal">Category-personal</option> 
+                    <option value="category-work">Category-work</option>  
+                    <option value="category-other">Category-other</option>              
                 </select>
 
                 
