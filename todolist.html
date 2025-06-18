@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-List</title>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
 </head>
 <body>
     <div class="todolist-container">
         <div class="navbar">
             <p>WELCOME TO TODO LIST</p>
-            <button>Report</button>
+           <div class="report">
+             <button>Report</button>
+             <div class="report-content">
+                <a href="report1.html">Weekly</a>
+                <a href="report2.html">Monthly</a>
+             </div>
+           </div>
             <button>Log out</button>
         </div>
         <div class="statistics">
@@ -41,7 +52,7 @@
 
             <label >Sort:</label>
                <select name="Category" id="" > 
-                    <option value="1">All</option>
+                    <option value="1">None</option>
                     <option value="2">Deadline</option>
                     <option value="3">Alphabet</option>
                 </select>
@@ -49,10 +60,21 @@
             <label >Filter:</label>
                <select name="Category"  > 
                     <option value="1">All</option>
-                    <option value="2">Category</option>               
+                    <option value="2">Category-personal</option> 
+                    <option value="2">Category-work</option>  
+                    <option value="2">Category-other</option>              
                 </select>
+
+                
                 <ul>
-                    
+                    <li>Finish HW  20/06/2025 studying
+                        <span>
+                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                        </span>
+
+                    </li>
                 </ul>
             
         </section>
