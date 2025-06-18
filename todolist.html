@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-List</title>
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 />
 
 </head>
@@ -15,20 +13,20 @@
         <div class="navbar">
             <p>WELCOME TO TODO LIST</p>
            <div class="report">
-             <button>Report</button>
-             <div class="report-content">
-                <a href="report1.html">Weekly</a>
-                <a href="report2.html">Monthly</a>
-             </div>
+             
+             <span class="report-content">
+                <button><a href="report1.html">Weekly-Reort</a></button>
+                <button><a href="report2.html">Monthly-Report</a></button> 
+             </span>
            </div>
-            <button>Log out</button>
+            <button><a href="login.html">Log out</a></button>
         </div>
         <div class="statistics">
              <h3>STATISTICS</h3>
              <p>Completed:0 <br> pending:0</p>
         </div>
         <div class="add">
-            <form action="">
+            <form >
                 <label for="">Title:</label>
                 <input type="text" placeholder="Title" class="title">
 
@@ -36,7 +34,7 @@
                 <input type="date" class="deadline">
 
                 <label >Category:</label>
-               <select name="Category" id="" >                    
+                <select name="Category" id="" >                    
                     <option value="1">personal</option>
                     <option value="2">studying</option>
                     <option value="3">Work</option>
@@ -47,7 +45,7 @@
 
         </div>
 
-        <section class="list-option">
+        <section class="list">
             <h3>Your TODO's</h3>
 
             <label >Sort:</label>
@@ -58,7 +56,7 @@
                 </select>
 
             <label >Filter:</label>
-               <select name="Category"  > 
+               <select name="Category"> 
                     <option value="1">All</option>
                     <option value="2">Category-personal</option> 
                     <option value="2">Category-work</option>  
