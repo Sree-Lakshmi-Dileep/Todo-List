@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.login-container{
+    border: 5px solid black;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    margin-left:30vw ;
+    margin-right: 30vw;
+    margin-top: 25vh;  
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+        
+}
+
+.login-container h2{
+    margin-top: 20px;
+    font-size: 3em;
+}
+
+#login-form{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+   padding: 60px;
+   justify-content: center;
+    align-items: center;
+}
+
+#login-form #username,#password{
+    height: 5vmin;
+    width: 60vmin;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#login-form .login{
+    width: 20vmin;
+    height: 5vmin;
+    border-radius: 10px;
+    cursor: pointer;  
+}
+
+#login-form .login:hover{
+    background-color: rgb(3, 111, 45);
+    color: aliceblue;
+}
+
+.login-container p{
+    font-size: 1.3em;
+}
+
+
+/* todolist page styles*/
+.todolist-container{
+    margin: 10vw;
+    height: 70vh;
+    border: 1px solid black;
+    padding-left: 2vw;
+    border-radius: 20px;
+    background-color: antiquewhite;
+   
+}
+
+h3{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+.navbar{
+    height: 30px;
+    font-size: larger;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+     display: flex;
+
+}
