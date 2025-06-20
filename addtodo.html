@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="addtodo-container">
+        <div class="navbar">
+            <h3>Add Something to Do</h3>
+            <div>
+
+                
+                 <a href="todolist.html"><button>HOME</button></a>
+             <a href=""><button>REPORT</button></a>
+             <a href="login.html"><button>LOG OUT</button></a>
+            
+            
+            
+            </div>
+        </div>
+        <div class="add">
+            
+            <form  action="todolist.html">
+
+                <div>
+                    <label for="title">Title:</label>
+                     <input type="text" placeholder="Title" id="title" required>
+                </div>
+                
+                <div>
+                    <label for="deadline">Deadline:</label>
+                    <input type="date" id="deadline" required>
+                </div>
+                <div>
+                    <label for="category">Category:</label>
+                    <select id="category"  required>
+                        <option value="" selected disabled hidden>Select a category</option>
+                        <option value="personal">Personal</option>
+                        <option value="studies">Studies</option>
+                        <option value="work">Work</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <button type="submit">ADD TODO</button>
+                </div>
+
+                
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
