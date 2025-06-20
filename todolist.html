@@ -11,8 +11,10 @@
 </head>
 <body>
     <div class="todolist-container">
-        <div class="navbar">
-            <h2>WELCOME TO YOUR TODO LIST!</h2>
+        <div class="h-navbar">
+            
+                <h3 class="h-nleft">WELCOME TO YOUR TODO LIST!</h3>
+            
            <!--
             <div class="report">
              
@@ -25,74 +27,144 @@
         -->
 
 
-        <span>
-            <button >ADD</button>
-            <button>Report</button>
-            <button>Log out</button>
-        </span>
-        </div>
-        <div class="statistics">
-             <h3>Your Task Overview</h3>
-             <p>Total:0 <br> Completed:0 <br> Pending:0</p>
-        </div>
-        <div class="add">
-            <h3>Add Something to Do</h3>
-            <form >
-
-                <label for="title">Title:</label>
-                <input type="text" placeholder="Title" id="title">
-
-                <label for="deadline">Deadline:</label>
-                <input type="date" id="deadline">
-
-                <label for="category">Category:</label>
-                <select name="Category" id="category" >                    
-                    <option value="personal">Personal</option>
-                    <option value="studies">Studies</option>
-                    <option value="work">Work</option>
-                </select>
-                <button>ADD TODO</button>
-                
-            </form>
-
+            <div class="h-nright">
+                <a href="addtodo.html"><button>ADD</button></a>
+                <select name="report" id="report">
+                    <option value="" selected disabled hidden >REPORT</option>
+                    <option value="report1">MONTHLY</option>
+                    <option value="report2">WEEKLY</option>
+                </select>           
+                <a href="login.html"><button>LOG OUT</button></a>
+            </div>
         </div>
 
-        <section class="list">
-            <h3>Don't Forget These!</h3>
 
-            <label for="sort">Sort:</label>
+                <div class="todolist-content">
+                    <div class="left">
+             <section class="list">
+             <h3>Don't Forget These!</h3>
+
+            
                <select name="sort" id="sort"  > 
-                    <option value="none">None</option>
+                    <option value="" selected disabled hidden>sort</option>
                     <option value="deadline">Deadline</option>
                     <option value="alphabet">Alphabet</option>
                     <option value="category">Category</option>
                 </select>
 
-            <label for="filter">Filter:</label>
+            
                <select name="filter" id="filter"> 
-                    <option value="all">All</option>
+                    <option value="" selected disabled hidden>Filter</option>
                     <option value="category-personal">Category-personal</option> 
                     <option value="category-work">Category-work</option>  
                     <option value="category-other">Category-other</option>              
                 </select>
 
-                
-                <ul>
-                    <li>Finish HW  20/06/2025 studying
-                        <span>
+                <table border="1px" class="todos">
+                    <thead>
+                        <td>TITLE</td>
+                        <td>DEADLINE</td>
+                        <td>CATEGORY</td>
+                        <td>OPTIONS</td>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td>Finish HW</td>
+                            <td>20/06/2025</td>
+                            <td>studying</td>
+                            <td><span>
                             <i class="fa-solid fa-check" style="color: #0ff560;"></i>
                             <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
                             <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                        </span>
+                        </span></td>
+                        </tr>
+                        <tr>
+                            <td>Buy chocolates</td>
+                            <td>21/06/2025</td>
+                            <td>Personal</td>
+                            <td><span>
+                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                        </span></td>
+                        </tr>
+                        <tr>
+                            <td>submit record</td>
+                            <td>22/06/2025</td>
+                            <td>Work</td>
+                            <td><span>
+                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                        </span></td>
+                        </tr>
+                        <tr>
+                            <td>water the plants</td>
+                            <td>23/06/2025</td>
+                            <td>Personal</td>
+                            <td><span>
+                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                        </span></td>
+                        </tr>
+                        <tr>
+                            <td>read books</td>
+                            <td>24/06/2025</td>
+                            <td>studying</td>
+                            <td><span>
+                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                        </span></td>
+                        </tr>
 
-                    </li>
-                </ul>
+                    </tbody>
+                </table>
+
+                
+                
             
         </section>
+         </div>
+        
+         
+        <div class="right">
+            <div class="statistics">
+             <h3>Your Task Overview</h3>
+             <table border="1px" id="statistics-table">
+               <thead>
+                <td>TOTAL TASK</td>
+                <td>COMPLETED TASK</td>
+                <td>PENDING TASK</td>
+              </thead>
+            <tbody>
+                <td>5</td>
+                <td>0</td>
+                <td>5</td>
+            </tbody>
+        </table>
+            
+        </div>
+
+        </div>
+
+
+
+                </div>
+
+
+        
+            
+        </div>
        
 
 
-    </div>
+        
+        
+        
+        
+    
 </body>
 </html>
 
