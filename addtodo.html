@@ -17,8 +17,8 @@
 
                 
                  <a href="todolist.html"><button>HOME</button></a>
-             <a href=""><button>REPORT</button></a>
-             <a href="login.html"><button>LOG OUT</button></a>
+                <a href=""><button>REPORT</button></a>
+                <a href="login.html"><button>LOG OUT</button></a>
             
             
             
@@ -26,7 +26,7 @@
         </div>
         <div class="add">
             
-            <form  action="todolist.html">
+            <form onsubmit="addTodo(event)" >
 
                 <div>
                     <label for="title">Title:</label>
@@ -48,7 +48,7 @@
                 </div>
                 
                 <div>
-                    <button type="submit">ADD TODO</button>
+                    <button type="submit" >ADD TODO</button>
                 </div>
 
                 
@@ -56,5 +56,24 @@
 
         </div>
     </div>
+    <script >
+       function addTodo(event) {
+            event.preventDefault(); 
+
+                const title = document.getElementById("title").value;
+                const deadline = document.getElementById("deadline").value;
+                const category = document.getElementById("category").value;
+
+                let todos = JSON.parse(localStorage.getItem("todos"))|| [];
+                todos.push({title,deadline,category});
+
+                localStorage.setItem("todos",JSON.stringify(todos));
+
+                window.location.href="todolist.html";
+
+     
+      
+        }
+    </script>
 </body>
 </html>

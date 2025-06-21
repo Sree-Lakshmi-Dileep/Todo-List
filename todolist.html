@@ -4,167 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-List</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
     <div class="todolist-container">
-        <div class="h-navbar">
-            
+            <div class="h-navbar">
                 <h3 class="h-nleft">WELCOME TO YOUR TODO LIST!</h3>
-            
-           <!--
-            <div class="report">
-             
-             <span class="report-content">
-                <button><a href="report1.html">Weekly-Reort</a></button>
-                <button><a href="report2.html">Monthly-Report</a></button> 
-             </span>
-           </div>
-            <button><a href="login.html">Log out</a></button>
-        -->
-
-
-            <div class="h-nright">
-                <a href="addtodo.html"><button>ADD</button></a>
-                <select name="report" id="report">
-                    <option value="" selected disabled hidden >REPORT</option>
-                    <option value="report1">MONTHLY</option>
-                    <option value="report2">WEEKLY</option>
-                </select>           
-                <a href="login.html"><button>LOG OUT</button></a>
-            </div>
-        </div>
-
-
-                <div class="todolist-content">
-                    <div class="left">
-             <section class="list">
-             <h3>Don't Forget These!</h3>
-
-            
-               <select name="sort" id="sort"  > 
-                    <option value="" selected disabled hidden>sort</option>
-                    <option value="deadline">Deadline</option>
-                    <option value="alphabet">Alphabet</option>
-                    <option value="category">Category</option>
-                </select>
-
-            
-               <select name="filter" id="filter"> 
-                    <option value="" selected disabled hidden>Filter</option>
-                    <option value="category-personal">Category-personal</option> 
-                    <option value="category-work">Category-work</option>  
-                    <option value="category-other">Category-other</option>              
-                </select>
-
-                <table border="1px" class="todos">
-                    <thead>
-                        <td>TITLE</td>
-                        <td>DEADLINE</td>
-                        <td>CATEGORY</td>
-                        <td>OPTIONS</td>
-                    </thead>
-                    <tbody>
-                        <tr >
-                            <td>Finish HW</td>
-                            <td>20/06/2025</td>
-                            <td>studying</td>
-                            <td><span>
-                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                        </span></td>
-                        </tr>
-                        <tr>
-                            <td>Buy chocolates</td>
-                            <td>21/06/2025</td>
-                            <td>Personal</td>
-                            <td><span>
-                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                        </span></td>
-                        </tr>
-                        <tr>
-                            <td>submit record</td>
-                            <td>22/06/2025</td>
-                            <td>Work</td>
-                            <td><span>
-                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                        </span></td>
-                        </tr>
-                        <tr>
-                            <td>water the plants</td>
-                            <td>23/06/2025</td>
-                            <td>Personal</td>
-                            <td><span>
-                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                        </span></td>
-                        </tr>
-                        <tr>
-                            <td>read books</td>
-                            <td>24/06/2025</td>
-                            <td>studying</td>
-                            <td><span>
-                            <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                            <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                            <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                        </span></td>
-                        </tr>
-
-                    </tbody>
-                </table>
-
-                
-                
-            
-        </section>
-         </div>
-        
-         
-        <div class="right">
-            <div class="statistics">
-             <h3>Your Task Overview</h3>
-             <table border="1px" id="statistics-table">
-               <thead>
-                <td>TOTAL TASK</td>
-                <td>COMPLETED TASK</td>
-                <td>PENDING TASK</td>
-              </thead>
-            <tbody>
-                <td>5</td>
-                <td>0</td>
-                <td>5</td>
-            </tbody>
-        </table>
-            
-        </div>
-
-        </div>
-
-
-
+                <div class="h-nright">
+                    <a href="addtodo.html"><button>ADD</button></a>
+                    <select name="report" id="report">
+                        <option value="" selected disabled hidden >REPORT</option>
+                        <option value="report1">MONTHLY</option>
+                        <option value="report2">WEEKLY</option>
+                    </select>           
+                    <a href="login.html"><button>LOG OUT</button></a>
                 </div>
-
-
-        
+            </div>
+        <div class="todolist-content">
+            <div class="left">
+                <section class="list">
+                    <h3>Don't Forget These!</h3>
+                    <select name="sort" id="sort"  onchange="sortTodos()" > 
+                        <option value="" selected disabled hidden>sort</option>
+                        <option value="deadline">Deadline</option>
+                        <option value="alphabet">Alphabet</option>
+                        <option value="category">Category</option>
+                    </select>
+                    <select name="filter" id="filter"> 
+                        <option value="" selected disabled hidden>Filter</option>
+                        <option value="category-personal">Category-personal</option> 
+                        <option value="category-work">Category-work</option>  
+                        <option value="category-other">Category-other</option>              
+                    </select>
+                    <table border="1px" id="todos">
+                        <thead>
+                            <td>TITLE</td>
+                            <td>DEADLINE</td>
+                            <td>CATEGORY</td>
+                            <td>OPTIONS</td>
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <td>Finish HW</td>
+                                <td>20/06/2025</td>
+                                <td>studying</td>
+                                <td>
+                                    <span>
+                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Buy chocolates</td>
+                                <td>21/06/2025</td>
+                                <td>Personal</td>
+                                <td>
+                                    <span>
+                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>submit record</td>
+                                <td>22/06/2025</td>
+                                <td>Work</td>
+                                <td>
+                                    <span>
+                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>water the plants</td>
+                                <td>23/06/2025</td>
+                                <td>Personal</td>
+                                <td>
+                                    <span>
+                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>read books</td>
+                                <td>24/06/2025</td>
+                                <td>studying</td>
+                                <td>
+                                    <span>
+                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
             
-        </div>
-       
+            
+            <div class="right">
+                <div class="statistics">
+                    <h3>Your Task Overview</h3>
+                    <table border="1px" id="statistics-table">
+                        <thead>
+                            <td>TOTAL TASK</td>
+                            <td>COMPLETED TASK</td>
+                            <td>PENDING TASK</td>
+                        </thead>
+                        <tbody>
+                            <td>5</td>
+                            <td>0</td>
+                            <td>5</td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>   
+    </div>
 
-
-        
-        
-        
-        
-    
+        <script >
+            const todos= JSON.parse(localStorage.getItem("todos"))||[];
+            const tbody =document.querySelector("#todos tbody");
+            todos.forEach(todo=>{
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                <td>${todo.title}</td>
+                <td>${todo.deadline}</td>
+                <td>${todo.category}</td>
+                <td>
+                    <i class="fa-solid fa-check" style="color: #0ff560;"></i>
+                    <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
+                    <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                </td>`;
+                tbody.appendChild(row);
+            });
+  </script>
 </body>
 </html>
-
