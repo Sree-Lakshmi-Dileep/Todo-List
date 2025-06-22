@@ -28,12 +28,14 @@
                     <h3>Don't Forget These!</h3>
                     <select name="sort" id="sort"  onchange="sortTodos()" > 
                         <option value="" selected disabled hidden>sort</option>
+                        <option value="sort-all">None</option>
                         <option value="deadline">Deadline</option>
                         <option value="alphabet">Alphabet</option>
                         <option value="category">Category</option>
                     </select>
-                    <select name="filter" id="filter"> 
+                    <select name="filter" id="filter" onchange="filterTodos()"> 
                         <option value="" selected disabled hidden>Filter</option>
+                        <option value="category-all">ALL</option>
                         <option value="category-personal">Category-personal</option> 
                         <option value="category-work">Category-work</option>  
                         <option value="category-other">Category-other</option>              
@@ -46,66 +48,7 @@
                             <td>OPTIONS</td>
                         </thead>
                         <tbody>
-                            <tr >
-                                <td>Finish HW</td>
-                                <td>20/06/2025</td>
-                                <td>studying</td>
-                                <td>
-                                    <span>
-                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Buy chocolates</td>
-                                <td>21/06/2025</td>
-                                <td>Personal</td>
-                                <td>
-                                    <span>
-                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>submit record</td>
-                                <td>22/06/2025</td>
-                                <td>Work</td>
-                                <td>
-                                    <span>
-                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>water the plants</td>
-                                <td>23/06/2025</td>
-                                <td>Personal</td>
-                                <td>
-                                    <span>
-                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>read books</td>
-                                <td>24/06/2025</td>
-                                <td>studying</td>
-                                <td>
-                                    <span>
-                                        <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                                        <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                                        <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
-                                    </span>
-                                </td>
-                            </tr>
+                           
                         </tbody>
                     </table>
                 </section>

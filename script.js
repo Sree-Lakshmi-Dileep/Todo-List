@@ -3,7 +3,11 @@ function sortTodos() {
   const tbody = document.querySelector("#todos tbody");
   const rows = Array.from(tbody.querySelectorAll("tr"));
 
-  // Create array of row data objects
+  if (sortValue === "sort-all") {
+    window.location.reload(); 
+    return;
+  }
+
   const rowData = rows.map(row => {
     const cells = row.querySelectorAll("td");
     return {
@@ -14,7 +18,7 @@ function sortTodos() {
     };
   });
 
-  // Sort based on selected value
+ 
   if (sortValue === "deadline") {
     rowData.sort((a, b) => {
       const [d1, m1, y1] = a.deadline.split("/").map(Number);
@@ -29,13 +33,32 @@ function sortTodos() {
     rowData.sort((a, b) => a.category.localeCompare(b.category));
   }
 
-  // Clear existing rows
-  tbody.innerHTML = "";
 
-  // Append sorted rows
+  tbody.innerHTML = "";
   rowData.forEach(item => tbody.appendChild(item.element));
 }
 
 
 
 
+
+function filterTodos() {
+  const filterValue = document.getElementById("filter").value;
+  const tbody = document.querySelector("#todos tbody");
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+
+  rows.forEach(row => {
+    const categoryText = row.cells[2].innerText.trim().toLowerCase();
+
+    if (filterValue === "category-all") {
+      row.style.display = "";
+    } else if (filterValue === "category-personal") {
+      row.style.display = categoryText === "personal" ? "" : "none";
+    } else if (filterValue === "category-work") {
+      row.style.display = categoryText === "work" ? "" : "none";
+    } else if (filterValue === "category-other") {
+      const known = ["personal", "work", "studying"];
+      row.style.display = known.includes(categoryText) ? "none" : "";
+    }
+  });
+}
