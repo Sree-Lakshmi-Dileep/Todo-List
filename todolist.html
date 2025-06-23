@@ -38,7 +38,7 @@
                         <option value="category-all">ALL</option>
                         <option value="category-personal">Category-personal</option> 
                         <option value="category-work">Category-work</option>  
-                        <option value="category-other">Category-other</option>              
+                        <option value="category-study">Category-studies</option>              
                     </select>
                     <table border="1px" id="todos">
                         <thead>
@@ -85,9 +85,9 @@
                 <td>${todo.deadline}</td>
                 <td>${todo.category}</td>
                 <td>
-                    <i class="fa-solid fa-check" style="color: #0ff560;"></i>
-                    <i class="fa-solid fa-pen" style="color: #74C0FC;"></i>
-                    <i class="fa-solid fa-trash" style="color: #7a6e43;"></i>
+                    <i class="fa-solid fa-check" style="color: #0ff560;" ></i>
+                    <i class="fa-solid fa-pen" style="color: #74C0FC;></i>
+                    <i class="fa-solid fa-trash" style="color: #7a6e43;" onclick="deleteTodo(this)"></i>
                 </td>`;
                 tbody.appendChild(row);
             });

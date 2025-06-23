@@ -39,7 +39,7 @@ function sortTodos() {
 }
 
 
-
+//filter function
 
 
 function filterTodos() {
@@ -56,9 +56,34 @@ function filterTodos() {
       row.style.display = categoryText === "personal" ? "" : "none";
     } else if (filterValue === "category-work") {
       row.style.display = categoryText === "work" ? "" : "none";
-    } else if (filterValue === "category-other") {
-      const known = ["personal", "work", "studying"];
-      row.style.display = known.includes(categoryText) ? "none" : "";
-    }
-  });
+    } else if (filterValue === "category-study") {
+      row.style.display = categoryText === "studies" ? "" : "none";
+  }});
 }
+
+
+
+//delete function
+
+function deleteTodo(icon){
+  const row = icon.closest("tr");
+  const title = row.cells[0].innerText.trim();
+  const deadline = row.cells[1].innerText.trim();
+  const category = row.cells[2].innerText.trim();
+
+  row.remove();
+
+  let todos =JSON.parse(localStorage.getItem("todos"))||[];
+  todos= todos.filter(todo=>
+    todo.title!==title ||
+    todo.deadline!==deadline||
+    todo.category!==category
+  );
+  localStorage.setItem("todos",JSON.stringify(todos));
+
+}
+
+
+
+
+
