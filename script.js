@@ -127,6 +127,17 @@ function renderTodos(){
 }
 
 
+//function -> status update
+
+function updateStatus(){
+  const total =todos.length;
+  const completed =todos.filter(t=>t.completed).length;
+  const pending=total-completed;
+
+  document.getElementById("total-count").textContent=total;
+  document.getElementById("completed-count").textContent=completed;
+  document.getElementById("pending-count").textContent=pending;
+}
 
 
 renderTodos();
