@@ -1,3 +1,5 @@
+//sorting function
+
 function sortTodos() {
   const sortValue = document.getElementById("sort").value;
   const tbody = document.querySelector("#todos tbody");
@@ -41,7 +43,6 @@ function sortTodos() {
 
 //filter function
 
-
 function filterTodos() {
   const filterValue = document.getElementById("filter").value;
   const tbody = document.querySelector("#todos tbody");
@@ -60,7 +61,6 @@ function filterTodos() {
       row.style.display = categoryText === "studies" ? "" : "none";
   }});
 }
-
 
 
 //delete function
@@ -84,6 +84,52 @@ function deleteTodo(icon){
 }
 
 
+//finish functiion
+
+  function finishTodo(icon) {
+    const row = icon.closest("tr");
+    const title = row.cells[0].innerText.trim();
+    const deadline = row.cells[1].innerText.trim();
+    const category = row.cells[2].innerText.trim();
+
+    todos = todos.map(todo =>
+      todo.title === title &&
+      todo.deadline === deadline &&
+      todo.category === category? { ...todo, completed: true }: todo
+    );
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+    renderTodos();
+};
+
+function renderTodos(){
+  tbody.innerHTML="";
+  const incomplete = todos.filter(todo => ! todo.completed);
+  const completed = todos.filter(todo =>  todo.completed);
+  const all = [...incomplete,...completed];
+   
+  all.forEach(todo=>{
+    const style = todo.completed?'text-decoration:line-through;':'';
+
+    const row = document.createElement("tr");
+    row.innerHTML =
+    ` <td style="${style}">${todo.title}</td>
+      <td style="${style}">${todo.deadline}</td>
+      <td style="${style}">${todo.category}</td>
+      <td >
+        <i class="fa-solid fa-check" style="color: #0ff560;" onclick="finishTodo(this)"></i>
+        <i class="fa-solid fa-pen" style="color: #74C0FC; onclick="editTodo(this)"></i>
+        <i class="fa-solid fa-trash" style="color: #7a6e43;" onclick="deleteTodo(this)"></i>
+      </td>`;
+      tbody.appendChild(row);
+      updateStatus();
+  });
+}
+
+
+
+
+renderTodos();
 
 
 
