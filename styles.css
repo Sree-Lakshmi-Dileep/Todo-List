@@ -3,6 +3,50 @@
     padding: 0;
 }
 
+button{
+    cursor: pointer;
+}
+.navbar h3{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        margin: -20px;
+        margin-left: -4vw;
+        
+
+
+}
+
+.navbar .nright{
+    margin: -1.5vw;
+}
+
+.h-navbar h3{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        margin: 20px;
+        margin-left: -1vw;
+
+
+}
+.h-navbar{
+        display: flex;
+    height: 5vh
+}
+
+
+.h-navbar .h-nright{
+    margin-left: 40vw;
+    margin-top: 20px;
+   
+}
+
+h3{
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+h2{
+    margin: 10px;
+}
+
+
 .login-container{
     border: 5px solid black;
     background-color: antiquewhite;
@@ -54,7 +98,60 @@
 }
 
 
+
+/* sign up*/
+.sign-container{
+    border: 5px solid black;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    margin-left:30vw ;
+    margin-right: 30vw;
+    margin-top: 25vh;  
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+        
+}
+
+.sign-container h2{
+    margin-top: 20px;
+    font-size: 3em;
+}
+
+#sign-form{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+   padding: 60px;
+   justify-content: center;
+    align-items: center;
+}
+
+#sign-form #username,#create-password, #confirm-password{
+    height: 5vmin;
+    width: 60vmin;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#sign-form .signup{
+    width: 20vmin;
+    height: 5vmin;
+    border-radius: 10px;
+    cursor: pointer;  
+}
+
+#sign-form .signup:hover{
+    background-color: rgb(3, 111, 45);
+    color: aliceblue;
+}
+
+
+
+
 /* todolist page styles*/
+
+
 .todolist-container{
     margin: 10vw;
     height: 70vh;
@@ -62,18 +159,148 @@
     padding-left: 2vw;
     border-radius: 20px;
     background-color: antiquewhite;
+    overflow-y: auto;
+
    
 }
 
-h3{
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
+.todolist-content{
+    display: flex;
+    height: 80vh;
 }
 
-.navbar{
+.left,.right{
+    flex: 1px;
+    padding: 20px;
+    
+}
+
+#statistics-table{
+    background-color: #fff;
+    text-align:center ;
+}
+
+
+
+
+
+
+/*.navbar{
     height: 30px;
     font-size: larger;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
      display: flex;
 
+}
+
+.navbar div{
+   
+    margin-left: 40px;
+    
+}
+
+.navbar{
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar div {
+    display: inline flex;
+    gap: 10px;
+    
+}*/
+.navbar{
+    display: flex;
+    height: 8vh;
+    height: 40px;
+}
+
+.nleft,.nright{
+    flex: 1px;
+    padding: 20px;
+    
+}
+
+.statistics{
+    margin-top: 20px;
+}
+
+#todos{
+    line-height: 8vh;
+    width: 45vw;
+    background-color: #fff;
+    text-align: center;
+   
+}
+
+
+
+.todo span i{
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+
+/* addtodo page styles*/
+
+.addtodo-container{
+   border: 5px solid black;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    margin-left:30vw ;
+    margin-right: 30vw;
+    margin-top: 25vh;  
+    padding: 20px;
+    text-align: center;
+        
+}
+
+.addtodo-container span{
+    display: inline-flex;
+    gap: 20px;
+}
+
+.add{
+   margin-top: 50px;
+   
+
+}
+
+.add form {
+   line-height: 50px;
+}
+
+/*Report */
+
+.report1-container ,.report2-container{
+     border: 5px solid black;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    margin-left:30vw ;
+    margin-right: 30vw;
+    margin-top: 25vh;  
+    padding: 20px;
+    text-align: center;
+    height: 40vh;
+        
+    
+}
+
+.week-table,.month-table{
+    margin-left: 10vw;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+
+
+.status-color{
+    display: flex;
+}
+
+.status-color{
+    margin: 10px;
+    line-height: 10px;
+    font-size: larger;
+    padding-top: 2vh;
 }
