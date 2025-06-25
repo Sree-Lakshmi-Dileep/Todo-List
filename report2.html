@@ -4,17 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monthly-report</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="report2-container">
-        <h1>REPORT-MONTHLY</h1>
+        <div class="navbar">
+            <h3 class="nleft">Review your monthly Report</h3>
+            <div class="nright">
+
+                
+                <a href="addtodo.html"><button>ADD</button></a>
+             <a href="todolist.html"><button>HOME</button></a>
+             <a href="login.html"><button>LOG OUT</button></a>
+            
+            
+            
+            </div>
+        </div>
+        <h2>REPORT-MONTHLY</h2>
         <h3>JUNE</h3>
-        <p>Total task:0 </p>
-        <p>Completed:0</p>
-        <p>Pending task:0</p>
+        <table border="1px"  class="week-table">
+            <thead>
+                <td>TOTAL TASK</td>
+                <td>COMPLETED</td>
+                <td>PENDING</td>
+            </thead>
+            <tbody>
+                <td>5</td>
+                <td>0</td>
+                <td>5</td>
+            </tbody>
+        </table>
         <p>Best day:10/06/25</p>
 	
 
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

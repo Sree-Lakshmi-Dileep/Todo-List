@@ -122,7 +122,7 @@ function renderTodos(){
   const completed = todos.filter(todo =>  todo.completed);
   const all = [...incomplete,...completed];
   
-  all.forEach(todo=>{
+  all.forEach((todo,index)=>{
 
   //function to highlight row based on deadline
     const daysLeft = getDaysLeft(todo.deadline);
@@ -147,10 +147,12 @@ function renderTodos(){
       <td style="${combinedstyle}">${todo.category}</td>
       <td " ${combinedstyle}">
         <i class="fa-solid fa-check" style="color: #0ff560;" onclick="finishTodo(this)"></i>
-        <i class="fa-solid fa-pen" style="color: #74C0FC; onclick="editTodo(this)"></i>
+        <i class="fa-solid fa-pen" style="color: #74C0FC; onclick="edit_Todo(${index})"></i>
         <i class="fa-solid fa-trash" style="color: #7a6e43;" onclick="deleteTodo(this)"></i>
       </td>`;
     tbody.appendChild(row);
+
+    
     updateStatus();
   });
 }
@@ -167,6 +169,22 @@ function updateStatus(){
   document.getElementById("completed-count").textContent=completed;
   document.getElementById("pending-count").textContent=pending;
 }
+
+function goToReportPage(){
+  const reportType = document.getElementById("report").value;
+  if (reportType=== "weekly"){
+    window.location.href = "report1.html";
+  }
+  else if (reportType=== "monthly"){
+    window.location.href = "report2.html";
+  }
+}
+
+
+
+  
+
+
 
 renderTodos();
 
