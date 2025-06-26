@@ -11,33 +11,28 @@
         <div class="navbar">
             <h3 class="nleft">Review your monthly Report</h3>
             <div class="nright">
-
-                
                 <a href="addtodo.html"><button>ADD</button></a>
-             <a href="todolist.html"><button>HOME</button></a>
-             <a href="login.html"><button>LOG OUT</button></a>
-            
-            
-            
+                <a href="todolist.html"><button>HOME</button></a>
+                <a href="login.html"><button>LOG OUT</button></a>
+                <select name="" id="months" onchange="monthSelect()">
+                    <option value=""selected disabled hidden>choose a month</option>
+                    <option value="2025-01-01_to_2025-01-31">january</option>
+                    <option value="2025-02-01_to_2025-02-28">February</option>
+                    <option value="2025-03-01_to_2025-03-31">March</option>
+                    <option value="2025-04-01_to_2025-04-30">April</option>
+                    <option value="2025-05-01_to_2025-05-31">May</option>
+                    <option value="2025-06-01_to_2025-06-30">June</option>
+                    <option value="2025-07-01_to_2025-07-31">July</option>
+                    <option value="2025-08-01_to_2025-08-31">August</option>
+                    <option value="2025-09-01_to_2025-09-30">September</option>
+                    <option value="2025-10-01_to_2025-10-31">October</option>
+                    <option value="2025-11-01_to_2025-11-30">November</option>
+                    <option value="2025-12-01_to_2025-12-31">December</option>    
+                </select>
             </div>
         </div>
         <h2>REPORT-MONTHLY</h2>
-        <h3>JUNE</h3>
-        <table border="1px"  class="week-table">
-            <thead>
-                <td>TOTAL TASK</td>
-                <td>COMPLETED</td>
-                <td>PENDING</td>
-            </thead>
-            <tbody>
-                <td>5</td>
-                <td>0</td>
-                <td>5</td>
-            </tbody>
-        </table>
-        <p>Best day:10/06/25</p>
-	
-
+        <div id="month-status"></div>
     </div>
     <script src="script.js"></script>
 </body>
