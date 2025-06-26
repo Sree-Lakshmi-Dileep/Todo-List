@@ -19,7 +19,6 @@ function sortTodos() {
       element: row
     };
   });
-
  
   if (sortValue === "deadline") {
     rowData.sort((a, b) => {
@@ -35,11 +34,9 @@ function sortTodos() {
     rowData.sort((a, b) => a.category.localeCompare(b.category));
   }
 
-
   tbody.innerHTML = "";
   rowData.forEach(item => tbody.appendChild(item.element));
 }
-  
 
 
 //filter function
@@ -71,7 +68,6 @@ function deleteTodo(icon){
   const title = row.cells[0].innerText.trim();
   const deadline = row.cells[1].innerText.trim();
   const category = row.cells[2].innerText.trim();
-
   row.remove();
 
   let todos =JSON.parse(localStorage.getItem("todos"))||[];
@@ -81,14 +77,13 @@ function deleteTodo(icon){
     todo.category!==category
   );
   localStorage.setItem("todos",JSON.stringify(todos));
-
+  window.location.reload();
 }
 
 //function to highlight task based on deadline
 
-
 function getDaysLeft(dateStr){
-    const [y,m,d] = dateStr.split("-").map(Number);
+  const [y,m,d] = dateStr.split("-").map(Number);
   const today =new Date();
   const deadline= new Date(y,m-1,d);
   today.setHours(0,0,0,0);
@@ -96,6 +91,7 @@ function getDaysLeft(dateStr){
   const diff = deadline-today;
    return Math.ceil(diff/(1000*60*60*24));
 }
+
 
 //finish functiion
 
@@ -117,24 +113,25 @@ function getDaysLeft(dateStr){
 
 function renderTodos(){
   const tbody = document.querySelector("#todos tbody");
-  tbody.innerHTML="";
+ if(tbody){
+    tbody.innerHTML=""
+  }
   const incomplete = todos.filter(todo => ! todo.completed);
   const completed = todos.filter(todo =>  todo.completed);
   const all = [...incomplete,...completed];
-  
-  all.forEach((todo,index)=>{
 
+  all.forEach((todo,index)=>{
   //function to highlight row based on deadline
     const daysLeft = getDaysLeft(todo.deadline);
     let colorStyle ="";
     if(daysLeft < 0) {
-      colorStyle = "background-color:red;color:white;";
+      colorStyle = "background-color:red;";
     }
     else if(daysLeft >= 0 && daysLeft <= 2){
-      colorStyle= "background-color:orange;color:white;";
+      colorStyle= "background-color:orange;";
     }
     else if(daysLeft >= 3 && daysLeft <= 5){
-      colorStyle= "background-color:yellow;color:white;";
+      colorStyle= "background-color:yellow;";
     }
 
     const strikeStyle = todo.completed?'text-decoration:line-through;':'';
@@ -146,13 +143,11 @@ function renderTodos(){
       <td style="${combinedstyle}">${todo.deadline}</td>
       <td style="${combinedstyle}">${todo.category}</td>
       <td " ${combinedstyle}">
-        <i class="fa-solid fa-check" style="color: #0ff560;" onclick="finishTodo(this)"></i>
-        <i class="fa-solid fa-pen" style="color: #74C0FC; onclick="edit_Todo(${index})"></i>
-        <i class="fa-solid fa-trash" style="color: #7a6e43;" onclick="deleteTodo(this)"></i>
+        <i class="fa-solid fa-check" style="color: #0ff560;cursor:pointer;" onclick="finishTodo(this)"></i>
+        <i class="fa-solid fa-pen" style="color: #74C0FC;cursor:pointer; onclick="edit_Todo(${index})"></i>
+        <i class="fa-solid fa-trash" style="color: #7a6e43;cursor:pointer;" onclick="deleteTodo(this)"></i>
       </td>`;
-    tbody.appendChild(row);
-
-    
+    tbody.appendChild(row); 
     updateStatus();
   });
 }
@@ -164,7 +159,6 @@ function updateStatus(){
   const total = todos.length;
   const completed =todos.filter(todo=>todo.completed).length;
   const pending=total-completed;
-
   document.getElementById("total-count").textContent=total;
   document.getElementById("completed-count").textContent=completed;
   document.getElementById("pending-count").textContent=pending;
@@ -182,39 +176,32 @@ function goToReportPage(){
   }
 }
 
-//function->weekly report
 
+//function->weekly report
 
 function weekSelect() {
   const weeks = document.getElementById("weeks").value;
   const statusContainer = document.getElementById("week-status");
   if (statusContainer){
        statusContainer.innerHTML = "";
-
   }
                                                                                          
   const [startStr, endStr] = weeks.split("_to_");
-  
   const startDate = new Date(startStr);
   const endDate = new Date(endStr);
-
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
-
   const weeklyTodos = todos.filter(todo => {
     const [y, m, d] = todo.deadline.split("-").map(Number);
     const todoDate = new Date(y, m - 1, d);
     return todoDate >= startDate && todoDate <= endDate;
   });
-  
-
   const completed = weeklyTodos.filter(todo => todo.completed).length;
   const total = weeklyTodos.length;
   const pending = total - completed;
- 
 
   statusContainer.innerHTML = `
     <h3>Status for ${startStr} to ${endStr}</h3>
-     <table border="1px"  class="week-table">
+     <table border="1px"  class="week-table" >
             <thead>
                 <th>TOTAL TASK</th>
                 <th>COMPLETED</th>
@@ -230,6 +217,44 @@ function weekSelect() {
 }
 
 
+//function->month wise report
+
+function monthSelect(){
+  const months=document.getElementById("months").value;
+  statusContainer=document.getElementById("month-status");
+  if(statusContainer){
+    statusContainer.innerHTML="";
+  }
+  const [startStr,endStr] = months.split("_to_");
+  const startDate = new Date(startStr);
+  const endDate = new Date(endStr);
+  const monthName= startDate.toLocaleString("default",{month:"long"});
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
+  const monthlyTodos =todos.filter(todo=>{
+    const[y,m,d] =todo.deadline.split("-").map(Number);
+    const todoDate=new Date(y ,m-1,d);
+    return todoDate>=startDate&&endDate>=todoDate;
+  })
+  
+  const total =monthlyTodos.length;
+  const completed =monthlyTodos.filter(todo=>todo.completed===true).length;
+  const pending =total-completed;
+
+  statusContainer.innerHTML=`
+  <h2>Status for ${monthName} 2025</h2>
+  <table border="1px"  class="week-table">
+            <thead>
+                <td>TOTAL TASK</td>
+                <td>COMPLETED</td>
+                <td>PENDING</td>
+            </thead>
+            <tbody>
+                <td>${total}</td>
+                <td>${completed}</td>
+                <td>${pending}</td>
+            </tbody>
+        </table>
+  `}
 
 renderTodos();
 
