@@ -170,6 +170,8 @@ function updateStatus(){
   document.getElementById("pending-count").textContent=pending;
 }
 
+
+// function->report page navigation
 function goToReportPage(){
   const reportType = document.getElementById("report").value;
   if (reportType=== "weekly"){
@@ -180,9 +182,52 @@ function goToReportPage(){
   }
 }
 
+//function->weekly report
 
 
+function weekSelect() {
+  const weeks = document.getElementById("weeks").value;
+  const statusContainer = document.getElementById("week-status");
+  if (statusContainer){
+       statusContainer.innerHTML = "";
+
+  }
+                                                                                         
+  const [startStr, endStr] = weeks.split("_to_");
   
+  const startDate = new Date(startStr);
+  const endDate = new Date(endStr);
+
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+  const weeklyTodos = todos.filter(todo => {
+    const [y, m, d] = todo.deadline.split("-").map(Number);
+    const todoDate = new Date(y, m - 1, d);
+    return todoDate >= startDate && todoDate <= endDate;
+  });
+  
+
+  const completed = weeklyTodos.filter(todo => todo.completed).length;
+  const total = weeklyTodos.length;
+  const pending = total - completed;
+ 
+
+  statusContainer.innerHTML = `
+    <h3>Status for ${startStr} to ${endStr}</h3>
+     <table border="1px"  class="week-table">
+            <thead>
+                <th>TOTAL TASK</th>
+                <th>COMPLETED</th>
+                <th>PENDING</th>
+            </thead>
+            <tbody>
+                <td>${total}</td>
+                <td>${completed}</td>
+                <td>${pending}</td>
+            </tbody>
+        </table>
+  `;
+}
 
 
 
