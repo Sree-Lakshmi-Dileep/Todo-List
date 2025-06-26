@@ -11,33 +11,28 @@
         <div class="navbar">
             <h3 class="nleft">Review your weekly Report</h3>
             <div class="nright">
+                <a href="addtodo.html"><button>ADD</button></a>
+                <a href="todolist.html"><button>HOME</button></a>
+                <a href="login.html"><button>LOG OUT</button></a>
+                <select  id="weeks" onchange="weekSelect()">
+                    <option value=""selected disabled hidden>choose a week</option>
+                    <option value="2025-06-01_to_2025-06-07">june 1-june 7</option>
+                    <option value="2025-06-08_to_2025-06-14">june 8-june 14</option>
+                    <option value="2025-06-15_to_2025-06-21">june 15-june 21</option>
+                    <option value="2025-06-22_to_2025-06-28">june 22-june 28</option>
+                    <option value="2025-06-29_to_2025-07-05">june 29-july 5</option>
+                    <option value="2025-07-06_to_2025-07-12">july 6-july 12</option>
+                    <option value="2025-07-13_to_2025-07-19">july 13-july 19</option>
+                    <option value="2025-07-20_to_2025-07-26">july 20-july 26</option>
+                    <option value="2025-07-27_to_2025-07-02">july 27-august 2</option>
 
-                
-             <a href="addtodo.html"><button>ADD</button></a>
-             <a href="todolist.html"><button>HOME</button></a>
-             <a href="login.html"><button>LOG OUT</button></a>
-            
-            
-            
+                </select>
             </div>
         </div>
         <h2>REPORT-WEEKLY</h2>
-        <h3>1/6/2025-7/1/2025</h3>
-        <table border="1px"  class="week-table">
-            <thead>
-                <th>TOTAL TASK</th>
-                <th>COMPLETED</th>
-                <th>PENDING</th>
-            </thead>
-            <tbody>
-                <td>5</td>
-                <td>0</td>
-                <td>5</td>
-            </tbody>
-        </table>
-        <p>Best day:Wednesday</p>
-	
+       <div id="week-status">
 
+       </div>
     </div>
     <script src="script.js"></script>
 </body>
