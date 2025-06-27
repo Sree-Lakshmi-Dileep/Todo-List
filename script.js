@@ -61,6 +61,8 @@ function filterTodos() {
 }
 
 
+
+
 //delete function
 
 function deleteTodo(icon){
@@ -68,9 +70,10 @@ function deleteTodo(icon){
   const title = row.cells[0].innerText.trim();
   const deadline = row.cells[1].innerText.trim();
   const category = row.cells[2].innerText.trim();
+  
   row.remove();
 
-  let todos =JSON.parse(localStorage.getItem("todos"))||[];
+  //let todos =JSON.parse(localStorage.getItem("todos"))||[];
   todos= todos.filter(todo=>
     todo.title!==title ||
     todo.deadline!==deadline||
@@ -96,10 +99,12 @@ function getDaysLeft(dateStr){
 //finish functiion
 
   function finishTodo(icon) {
+    
     const row = icon.closest("tr");
     const title = row.cells[0].innerText.trim();
     const deadline = row.cells[1].innerText.trim();
     const category = row.cells[2].innerText.trim();
+    
 
     todos = todos.map(todo =>
       todo.title === title &&
@@ -120,7 +125,7 @@ function renderTodos(){
   const completed = todos.filter(todo =>  todo.completed);
   const all = [...incomplete,...completed];
 
-  all.forEach((todo,index)=>{
+  all.forEach((todo)=>{
   //function to highlight row based on deadline
     const daysLeft = getDaysLeft(todo.deadline);
     let colorStyle ="";
@@ -143,8 +148,9 @@ function renderTodos(){
       <td style="${combinedstyle}">${todo.deadline}</td>
       <td style="${combinedstyle}">${todo.category}</td>
       <td " ${combinedstyle}">
+              <i class="fa-solid fa-pen" style="color: #74C0FC;cursor:pointer;" onclick="edit_Todo(this)"></i>
+
         <i class="fa-solid fa-check" style="color: #0ff560;cursor:pointer;" onclick="finishTodo(this)"></i>
-        <i class="fa-solid fa-pen" style="color: #74C0FC;cursor:pointer; onclick="edit_Todo(${index})"></i>
         <i class="fa-solid fa-trash" style="color: #7a6e43;cursor:pointer;" onclick="deleteTodo(this)"></i>
       </td>`;
     tbody.appendChild(row); 
@@ -254,7 +260,31 @@ function monthSelect(){
                 <td>${pending}</td>
             </tbody>
         </table>
-  `}
+  `
+}
+
+//edit fn
+
+function edit_Todo(icon) {
+  const row = icon.closest("tr");
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  const index =rows.indexOf(row);
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
+  const todo =todos[index];
+  localStorage.setItem("index",JSON.stringify(index));
+  localStorage.setItem("todo",JSON.stringify(todo));
+  window.location.href="editTodo.html";
+
+
+  
+      
+  
+}
+
+
+
+
+
 
 renderTodos();
 
