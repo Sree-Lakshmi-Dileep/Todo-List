@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Edit Todo</h2>
+  <form id="edit-form" onsubmit="update(event)">
+    <input type="text" id="title" placeholder="Title" required />
+    <input type="date" id="deadline" required />
+    <input type="text" id="category" placeholder="Category" required />
+    <button type="submit">Update Todo</button>
+  </form>
+  <script src="script.js"> </script>
+  <script>
+      const index = JSON.parse(localStorage.getItem("index")) || [];
+      const todo = JSON.parse(localStorage.getItem("todo")) || [];
+      document.getElementById("title").value=todo.title;
+      document.getElementById("deadline").value=todo.deadline;
+      document.getElementById("category").value=todo.category;
+
+      function update(e){
+        e.preventDefault();
+        const newTitle =document.getElementById("title").value.trim();
+        const newDeadline=document.getElementById("deadline").value;
+        const newCategory=document.getElementById("category").value;
+
+          const todos = JSON.parse(localStorage.getItem("todos")) || [];
+        todos[index] = {
+        ...todos[index], 
+        title: newTitle,
+        deadline: newDeadline,
+        category:newCategory,
+      };
+        localStorage.setItem("todos",JSON.stringify(todos));
+        window.location.href ="todolist.html";
+
+      
+      
+      }
+
+      
+      
+
+   
+
+  </script>
+  
+</body>
+</html>

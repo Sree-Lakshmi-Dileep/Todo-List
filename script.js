@@ -10,7 +10,22 @@ function sortTodos() {
     return;
   }
 
-    const rowData = rows.map(row => {
+
+  const completeRows=[];
+  const incompleteRows=[];
+
+  rows.forEach(row=>{
+    const textDecor =row.cells[0].style.textDecoration;
+    if(textDecor.includes("line-through")){
+      completeRows.push(row);
+    }
+    else{
+      incompleteRows.push(row);
+    }
+  });
+
+
+    const rowData =incompleteRows.map(row => {
     const cells = row.querySelectorAll("td");
     return {
       title: cells[0].innerText.toLowerCase(),
@@ -36,6 +51,9 @@ function sortTodos() {
 
   tbody.innerHTML = "";
   rowData.forEach(item => tbody.appendChild(item.element));
+  completeRows.forEach(row=>
+    tbody.appendChild(row)
+  );
 }
 
 
@@ -46,7 +64,20 @@ function filterTodos() {
   const tbody = document.querySelector("#todos tbody");
   const rows = Array.from(tbody.querySelectorAll("tr"));
 
-  rows.forEach(row => {
+  const completeRows=[];
+  const incompleteRows=[];
+
+  rows.forEach(row=>{
+    const textDecor =row.cells[0].style.textDecoration;
+    if(textDecor.includes("line-through")){
+      completeRows.push(row);
+    }
+    else{
+      incompleteRows.push(row);
+    }
+  });
+
+  incompleteRows.forEach(row => {
     const categoryText = row.cells[2].innerText.trim().toLowerCase();
 
     if (filterValue === "category-all") {
@@ -61,6 +92,8 @@ function filterTodos() {
 }
 
 
+
+
 //delete function
 
 function deleteTodo(icon){
@@ -68,9 +101,11 @@ function deleteTodo(icon){
   const title = row.cells[0].innerText.trim();
   const deadline = row.cells[1].innerText.trim();
   const category = row.cells[2].innerText.trim();
+  
   row.remove();
+  
 
-  let todos =JSON.parse(localStorage.getItem("todos"))||[];
+  //let todos =JSON.parse(localStorage.getItem("todos"))||[];
   todos= todos.filter(todo=>
     todo.title!==title ||
     todo.deadline!==deadline||
@@ -78,6 +113,14 @@ function deleteTodo(icon){
   );
   localStorage.setItem("todos",JSON.stringify(todos));
   window.location.reload();
+
+   const rows = Array.from(tbody.querySelectorAll("tr"));
+  const inc_index =rows.indexOf(row);
+  arr_inc=
+  arr_inc.splice(inc_index,1);
+  console.log(arr_inc)
+  
+  localStorage.setItem("arr_inc",JSON.stringify(arr_inc))
 }
 
 //function to highlight task based on deadline
@@ -87,19 +130,21 @@ function getDaysLeft(dateStr){
   const today =new Date();
   const deadline= new Date(y,m-1,d);
   today.setHours(0,0,0,0);
-  deadline.setHours(0,0,0,0)
+  deadline.setHours(0,0,0,0);
   const diff = deadline-today;
-   return Math.ceil(diff/(1000*60*60*24));
+  return Math.ceil(diff/(1000*60*60*24));
 }
 
 
 //finish functiion
 
   function finishTodo(icon) {
+    
     const row = icon.closest("tr");
     const title = row.cells[0].innerText.trim();
     const deadline = row.cells[1].innerText.trim();
     const category = row.cells[2].innerText.trim();
+    
 
     todos = todos.map(todo =>
       todo.title === title &&
@@ -109,6 +154,14 @@ function getDaysLeft(dateStr){
 
     localStorage.setItem("todos", JSON.stringify(todos));
     renderTodos();
+   const arr_inc = JSON.parse(localStorage.getItem("arr_inc")) || [];
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  const inc_index =rows.indexOf(row);
+  console.log(inc_index);
+  arr_inc.splice(inc_index,1);
+  console.log(arr_inc)
+  
+  localStorage.setItem("arr_inc",JSON.stringify(arr_inc))
 };
 
 function renderTodos(){
@@ -120,7 +173,7 @@ function renderTodos(){
   const completed = todos.filter(todo =>  todo.completed);
   const all = [...incomplete,...completed];
 
-  all.forEach((todo,index)=>{
+  all.forEach((todo)=>{
   //function to highlight row based on deadline
     const daysLeft = getDaysLeft(todo.deadline);
     let colorStyle ="";
@@ -143,8 +196,9 @@ function renderTodos(){
       <td style="${combinedstyle}">${todo.deadline}</td>
       <td style="${combinedstyle}">${todo.category}</td>
       <td " ${combinedstyle}">
+              <i class="fa-solid fa-pen" style="color: #74C0FC;cursor:pointer;" onclick="edit_Todo(this)"></i>
+
         <i class="fa-solid fa-check" style="color: #0ff560;cursor:pointer;" onclick="finishTodo(this)"></i>
-        <i class="fa-solid fa-pen" style="color: #74C0FC;cursor:pointer; onclick="edit_Todo(${index})"></i>
         <i class="fa-solid fa-trash" style="color: #7a6e43;cursor:pointer;" onclick="deleteTodo(this)"></i>
       </td>`;
     tbody.appendChild(row); 
@@ -254,7 +308,31 @@ function monthSelect(){
                 <td>${pending}</td>
             </tbody>
         </table>
-  `}
+  `
+}
+
+//edit fn
+
+function edit_Todo(icon) {
+  const row = icon.closest("tr");
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  const index =rows.indexOf(row);
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
+  const todo =todos[index];
+  localStorage.setItem("index",JSON.stringify(index));
+  localStorage.setItem("todo",JSON.stringify(todo));
+  window.location.href="editTodo.html";
+
+
+  
+      
+  
+}
+
+
+
+
+
 
 renderTodos();
 
