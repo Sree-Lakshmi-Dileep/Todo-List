@@ -10,7 +10,22 @@ function sortTodos() {
     return;
   }
 
-    const rowData = rows.map(row => {
+
+  const completeRows=[];
+  const incompleteRows=[];
+
+  rows.forEach(row=>{
+    const textDecor =row.cells[0].style.textDecoration;
+    if(textDecor.includes("line-through")){
+      completeRows.push(row);
+    }
+    else{
+      incompleteRows.push(row);
+    }
+  });
+
+
+    const rowData =incompleteRows.map(row => {
     const cells = row.querySelectorAll("td");
     return {
       title: cells[0].innerText.toLowerCase(),
@@ -36,6 +51,9 @@ function sortTodos() {
 
   tbody.innerHTML = "";
   rowData.forEach(item => tbody.appendChild(item.element));
+  completeRows.forEach(row=>
+    tbody.appendChild(row)
+  );
 }
 
 
@@ -46,7 +64,20 @@ function filterTodos() {
   const tbody = document.querySelector("#todos tbody");
   const rows = Array.from(tbody.querySelectorAll("tr"));
 
-  rows.forEach(row => {
+  const completeRows=[];
+  const incompleteRows=[];
+
+  rows.forEach(row=>{
+    const textDecor =row.cells[0].style.textDecoration;
+    if(textDecor.includes("line-through")){
+      completeRows.push(row);
+    }
+    else{
+      incompleteRows.push(row);
+    }
+  });
+
+  incompleteRows.forEach(row => {
     const categoryText = row.cells[2].innerText.trim().toLowerCase();
 
     if (filterValue === "category-all") {
@@ -72,6 +103,7 @@ function deleteTodo(icon){
   const category = row.cells[2].innerText.trim();
   
   row.remove();
+  
 
   //let todos =JSON.parse(localStorage.getItem("todos"))||[];
   todos= todos.filter(todo=>
@@ -81,6 +113,14 @@ function deleteTodo(icon){
   );
   localStorage.setItem("todos",JSON.stringify(todos));
   window.location.reload();
+
+   const rows = Array.from(tbody.querySelectorAll("tr"));
+  const inc_index =rows.indexOf(row);
+  arr_inc=
+  arr_inc.splice(inc_index,1);
+  console.log(arr_inc)
+  
+  localStorage.setItem("arr_inc",JSON.stringify(arr_inc))
 }
 
 //function to highlight task based on deadline
@@ -90,9 +130,9 @@ function getDaysLeft(dateStr){
   const today =new Date();
   const deadline= new Date(y,m-1,d);
   today.setHours(0,0,0,0);
-  deadline.setHours(0,0,0,0)
+  deadline.setHours(0,0,0,0);
   const diff = deadline-today;
-   return Math.ceil(diff/(1000*60*60*24));
+  return Math.ceil(diff/(1000*60*60*24));
 }
 
 
@@ -114,6 +154,14 @@ function getDaysLeft(dateStr){
 
     localStorage.setItem("todos", JSON.stringify(todos));
     renderTodos();
+   const arr_inc = JSON.parse(localStorage.getItem("arr_inc")) || [];
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  const inc_index =rows.indexOf(row);
+  console.log(inc_index);
+  arr_inc.splice(inc_index,1);
+  console.log(arr_inc)
+  
+  localStorage.setItem("arr_inc",JSON.stringify(arr_inc))
 };
 
 function renderTodos(){
