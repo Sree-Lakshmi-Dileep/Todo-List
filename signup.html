@@ -4,16 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-up</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="sign-container">
         <h2>Signup</h2>
-        <form action="login.html" id="login-form">
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Create password" required>
-            <input type="password" placeholder="confirm password" required>
+        <form  id="sign-form" onsubmit="signUp(event)" >
+            <input type="text" placeholder="Username" required id="username">
+            <input type="password" placeholder="Create password"required id="pass1">
+            <input type="password" placeholder="confirm password" required  id="pass2">
             <button type="submit">Sign-up</button>
         </form>
     </div>
+    <script>
+        function signUp(event){
+            event.preventDefault();
+            const username= document.getElementById("username").value.trim();
+            const pass1 = document.getElementById("pass1").value.trim();
+            const pass2 = document.getElementById("pass2").value.trim();
+            const users = JSON.parse(localStorage.getItem("users"))|| [];
+            if(pass1!==pass2){
+                alert("passwords doesn't match")
+                return;
+            }
+            
+            users.push({username,pass1,pass2});
+            localStorage.setItem("users",JSON.stringify(users));
+            window.location.href="login.html";
+        }
+    </script>
 </body>
 </html>

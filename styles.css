@@ -127,21 +127,21 @@ h2{
     align-items: center;
 }
 
-#sign-form #username,#create-password, #confirm-password{
+#sign-form #username,#pass1, #pass2{
     height: 5vmin;
     width: 60vmin;
     border-radius: 10px;
     padding: 10px;
 }
 
-#sign-form .signup{
+#sign-form button{
     width: 20vmin;
     height: 5vmin;
     border-radius: 10px;
     cursor: pointer;  
 }
 
-#sign-form .signup:hover{
+#sign-form button:hover{
     background-color: rgb(3, 111, 45);
     color: aliceblue;
 }
@@ -179,8 +179,6 @@ h2{
     background-color: #fff;
     text-align:center ;
 }
-
-
 
 
 
