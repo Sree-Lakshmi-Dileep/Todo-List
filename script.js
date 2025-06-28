@@ -64,20 +64,8 @@ function filterTodos() {
   const tbody = document.querySelector("#todos tbody");
   const rows = Array.from(tbody.querySelectorAll("tr"));
 
-  const completeRows=[];
-  const incompleteRows=[];
-
-  rows.forEach(row=>{
-    const textDecor =row.cells[0].style.textDecoration;
-    if(textDecor.includes("line-through")){
-      completeRows.push(row);
-    }
-    else{
-      incompleteRows.push(row);
-    }
-  });
-
-  incompleteRows.forEach(row => {
+  
+  rows.forEach(row => {
     const categoryText = row.cells[2].innerText.trim().toLowerCase();
 
     if (filterValue === "category-all") {
@@ -114,13 +102,6 @@ function deleteTodo(icon){
   localStorage.setItem("todos",JSON.stringify(todos));
   window.location.reload();
 
-   const rows = Array.from(tbody.querySelectorAll("tr"));
-  const inc_index =rows.indexOf(row);
-  arr_inc=
-  arr_inc.splice(inc_index,1);
-  console.log(arr_inc)
-  
-  localStorage.setItem("arr_inc",JSON.stringify(arr_inc))
 }
 
 //function to highlight task based on deadline
@@ -154,14 +135,7 @@ function getDaysLeft(dateStr){
 
     localStorage.setItem("todos", JSON.stringify(todos));
     renderTodos();
-   const arr_inc = JSON.parse(localStorage.getItem("arr_inc")) || [];
-  const rows = Array.from(tbody.querySelectorAll("tr"));
-  const inc_index =rows.indexOf(row);
-  console.log(inc_index);
-  arr_inc.splice(inc_index,1);
-  console.log(arr_inc)
-  
-  localStorage.setItem("arr_inc",JSON.stringify(arr_inc))
+   
 };
 
 function renderTodos(){

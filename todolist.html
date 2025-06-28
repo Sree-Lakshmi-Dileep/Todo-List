@@ -54,7 +54,6 @@
                 </section>
             </div>
             
-            
             <div class="right">
                 <div class="statistics">
                     <h3>Your Task Overview</h3>
@@ -85,21 +84,20 @@
                         <div class="status-color">
                         <i class="fa-solid fa-circle" style="color: #cced0f;"></i>
                         <p>Upcoming</p>
-                        </div>
-
-
-
+                        
                     </div>
+                    <div class="status-color">
+                        <i class="fa-solid fa-circle" style="color: #f7f7f6;"></i>
+                        <p>not Recent</p>
+                        </div>
                 </div>
             </div>
         </div>   
     </div>
 
-        <script>
-  let todos = JSON.parse(localStorage.getItem("todos")) || [];
-const tbody = document.querySelector("#todos tbody");
-
-tbody.innerHTML = ""; 
+    <script>
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];
+        const tbody = document.querySelector("#todos tbody"); 
 
 todos.forEach((todo) => {
   const row = document.createElement("tr");
@@ -109,13 +107,11 @@ todos.forEach((todo) => {
     <td>${todo.category}</td>
     <td>
       <i class="fa-solid fa-check" style="color: #0ff560;" onclick="finishTodo(this)"></i>
-      
       <i class="fa-solid fa-pen" style="color: #74C0FC;" onclick="edit_Todo(this)"></i>
       <i class="fa-solid fa-trash" style="color: #7a6e43;" onclick="deleteTodo(this)"></i>
     </td>
   `;
-  tbody.appendChild(row);
-});
+  tbody.appendChild(row);})
 
 </script>
 
